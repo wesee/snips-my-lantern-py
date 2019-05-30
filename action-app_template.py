@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from snipsTools import SnipsConfigParser
@@ -32,7 +32,7 @@ class Template(object):
         self.start_blocking()
         
     # --> Sub callback function, one per intent
-    def intent_1_callback(self, hermes, intent_message):
+    def intent_turnred_callback(self, hermes, intent_message):
         # terminate the session first if not continue
         hermes.publish_end_session(intent_message.session_id, "")
         
@@ -40,9 +40,9 @@ class Template(object):
         print '[Received] intent: {}'.format(intent_message.intent.intent_name)
 
         # if need to speak the execution result by tts
-        hermes.publish_start_session_notification(intent_message.site_id, "Action1 has been done", "")
+        hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning red.", "")
 
-    def intent_2_callback(self, hermes, intent_message):
+    def intent_turnblue_callback(self, hermes, intent_message):
         # terminate the session first if not continue
         hermes.publish_end_session(intent_message.session_id, "")
 
@@ -50,17 +50,29 @@ class Template(object):
         print '[Received] intent: {}'.format(intent_message.intent.intent_name)
 
         # if need to speak the execution result by tts
-        hermes.publish_start_session_notification(intent_message.site_id, "Action2 has been done", "")
+        hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning blue.", "")
+
+    def intent_turngreen_callback(self, hermes, intent_message):
+        # terminate the session first if not continue
+        hermes.publish_end_session(intent_message.session_id, "")
+
+        # action code goes here...
+        print '[Received] intent: {}'.format(intent_message.intent.intent_name)
+
+        # if need to speak the execution result by tts
+        hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning green.", "")
 
     # More callback function goes here...
 
     # --> Master callback function, triggered everytime an intent is recognized
     def master_intent_callback(self,hermes, intent_message):
         coming_intent = intent_message.intent.intent_name
-        if coming_intent == 'intent_1':
-            self.intent_1_callback(hermes, intent_message)
-        if coming_intent == 'intent_2':
-            self.intent_2_callback(hermes, intent_message)
+        if coming_intent == 'turnRed':
+            self.intent_turnred_callback(hermes, intent_message)
+        if coming_intent == 'turnBlue':
+            self.intent_turnblue_callback(hermes, intent_message)
+        if coming_intent == 'turnGreen':
+            self.intent_turngreen_callback(hermes, intent_message)
 
         # more callback and if condition goes here...
 
