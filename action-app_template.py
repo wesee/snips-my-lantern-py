@@ -5,6 +5,7 @@ from snipsTools import SnipsConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
+import requests
 
 CONFIG_INI = "config.ini"
 
@@ -39,6 +40,8 @@ class Template(object):
         # action code goes here...
         print('[Received] intent: {}'.format(intent_message.intent.intent_name))
 
+        temp = requests.get("http://192.168.2.233:4000/red")
+        
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning red.", "")
 
@@ -49,6 +52,8 @@ class Template(object):
         # action code goes here...
         print('[Received] intent: {}'.format(intent_message.intent.intent_name))
 
+        temp = requests.get("http://192.168.2.233:4000/blue")
+        
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning blue.", "")
 
@@ -59,6 +64,8 @@ class Template(object):
         # action code goes here...
         print('[Received] intent: {}'.format(intent_message.intent.intent_name))
 
+        temp = requests.get("http://192.168.2.233:4000/green")
+        
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning green.", "")
 
