@@ -37,7 +37,7 @@ class Template(object):
         hermes.publish_end_session(intent_message.session_id, "")
         
         # action code goes here...
-        print '[Received] intent: {}'.format(intent_message.intent.intent_name)
+        print('[Received] intent: {}'.format(intent_message.intent.intent_name))
 
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning red.", "")
@@ -47,7 +47,7 @@ class Template(object):
         hermes.publish_end_session(intent_message.session_id, "")
 
         # action code goes here...
-        print '[Received] intent: {}'.format(intent_message.intent.intent_name)
+        print('[Received] intent: {}'.format(intent_message.intent.intent_name))
 
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning blue.", "")
@@ -57,7 +57,7 @@ class Template(object):
         hermes.publish_end_session(intent_message.session_id, "")
 
         # action code goes here...
-        print '[Received] intent: {}'.format(intent_message.intent.intent_name)
+        print('[Received] intent: {}'.format(intent_message.intent.intent_name))
 
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "Lantern turning green.", "")
