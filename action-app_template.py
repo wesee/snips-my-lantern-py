@@ -67,11 +67,11 @@ class Template(object):
     # --> Master callback function, triggered everytime an intent is recognized
     def master_intent_callback(self,hermes, intent_message):
         coming_intent = intent_message.intent.intent_name
-        if coming_intent == 'turnRed':
+        if coming_intent == 'wesee:turnRed':
             self.intent_turnred_callback(hermes, intent_message)
-        if coming_intent == 'turnBlue':
+        if coming_intent == 'wesee:turnBlue':
             self.intent_turnblue_callback(hermes, intent_message)
-        if coming_intent == 'turnGreen':
+        if coming_intent == 'wesee:turnGreen':
             self.intent_turngreen_callback(hermes, intent_message)
 
         # more callback and if condition goes here...
